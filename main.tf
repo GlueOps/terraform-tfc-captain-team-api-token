@@ -32,5 +32,5 @@ resource "tfe_team_token" "terraform_cloud_operator" {
 
 resource "local_file" "project_level_svc_account_key" {
   content  = base64encode("credentials app.terraform.io { token = \"${tfe_team_token.terraform_cloud_operator.token}\" }")
-  filename = "./terraform_cloud_operator/team_api_token.b64"
+  filename = "./terraform-cloud-operator/team-api-token.b64"
 }
