@@ -65,7 +65,7 @@ resource "tfe_variable" "VAULT_ADDR_FOR_INITIALIZATION" {
   key             = "TF_VAR_VAULT_ADDR_FOR_INITIALIZATION"
   value           = var.vault_url
   category        = "env"
-  sensitive       = true
+  sensitive       = false
   description     = "Vault URL used for vault-init"
   variable_set_id = tfe_variable_set.tfc.id
 }
