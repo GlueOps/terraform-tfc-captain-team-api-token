@@ -47,6 +47,7 @@ resource "tfe_variable" "TFE_TOKEN" {
   key             = "TFE_TOKEN"
   value           = tfe_team_token.terraform_cloud_operator.token
   category        = "env"
+  sensitive       = true
   description     = "Terraform Cloud Team API Token"
   variable_set_id = tfe_variable_set.tfc.id
 }
