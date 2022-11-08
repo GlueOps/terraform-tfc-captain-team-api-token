@@ -34,3 +34,19 @@ resource "local_file" "project_level_svc_account_key" {
   content  = base64encode("credentials app.terraform.io { token = \"${tfe_team_token.terraform_cloud_operator.token}\" }")
   filename = "./terraform-cloud-operator/team-api-token.b64"
 }
+
+
+resource "tfe_variable_set" "tfc" {
+  name         = "tfc_core"
+  description  = "Variable set applied to all workspaces."
+  global       = true
+  organization = tfe_organization.org.name
+}
+
+resource "tfe_variable" "TFE_TOKEN" {
+  key             = "TFE_TOKEN"
+  value           = tfe_team_token.terraform_cloud_operator.token
+  category        = "env"
+  description     = "Terraform Cloud Team API Token"
+  variable_set_id = tfe_variable_set.tfc.id
+}
