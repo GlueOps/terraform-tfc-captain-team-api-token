@@ -14,7 +14,7 @@ variable "org_name" {
   description = "The name of the terraform cloud organization"
 }
 
-variable "vault_url" {
+variable "VAULT_ADDR" {
   type        = string
   description = "The URL for the vault server"
 }
@@ -61,9 +61,9 @@ resource "tfe_variable" "TFE_TOKEN" {
 
 
 
-resource "tfe_variable" "VAULT_ADDR_FOR_INITIALIZATION" {
-  key             = "TF_VAR_VAULT_ADDR_FOR_INITIALIZATION"
-  value           = var.vault_url
+resource "tfe_variable" "VAULT_ADDR" {
+  key             = "VAULT_ADDR"
+  value           = var.VAULT_ADDR
   category        = "env"
   sensitive       = false
   description     = "Vault URL used for vault-init"
